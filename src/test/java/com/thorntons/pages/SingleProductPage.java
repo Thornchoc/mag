@@ -19,10 +19,10 @@ public class SingleProductPage {
     public WebDriver webDriver;
 
 
-    @FindByKey("home-page.add-to-cart")
+    @FindByKey("single-product-page.add-to-cart")
     public PageElement addToBag;
 
-    @FindByKey("home-page.view-cart")
+    @FindByKey("single-product-page.view-cart")
     public PageElement viewBag;
     
 

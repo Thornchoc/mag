@@ -3,7 +3,7 @@ default:
   # The locator strategies listed below should be used in the following precedence: id, name, css, xpath
 
   id:
-    home-page.add-to-cart: 'add-to-cart'
+    single-product-page.add-to-cart: 'add-to-cart'
     shopping-bag-page.cart-row: '#cart-table .cart-row'
 
   name:
@@ -13,7 +13,7 @@ default:
   css:
     # Add Home Page CSS locators below:
     home-page.top-banner: '.top-banner'
-    home-page.view-cart: '#mini-cart a.button.mini-cart-link-cart.button-mini-cart'
+    single-product-page.view-cart: '#mini-cart a.button.mini-cart-link-cart.button-mini-cart'
     home-page.checkout-button: '#checkout-form button[value="Checkout"]'
     bag-page.cart-row: '#cart-table .cart-row'
     
