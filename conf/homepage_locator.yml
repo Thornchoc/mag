@@ -1,0 +1,25 @@
+---
+default:
+  # The locator strategies listed below should be used in the following precedence: id, name, css, xpath
+
+  id:
+    home-page.add-to-cart: 'add-to-cart'
+    shopping-bag-page.cart-row: '#cart-table .cart-row'
+
+  name:
+    # Add Home Page NAME locators below: 
+    home-page.main-menu1: 'insert your NAME locator here'
+
+  css:
+    # Add Home Page CSS locators below:
+    home-page.top-banner: '.top-banner'
+    home-page.view-cart: '#mini-cart a.button.mini-cart-link-cart.button-mini-cart'
+    home-page.checkout-button: '#checkout-form button[value="Checkout"]'
+    bag-page.cart-row: '#cart-table .cart-row'
+    
+    
+    
+  xpath:
+    # Add Home Page XPATH locators below:
+    home-page.main-menu3: 'insert your XPATH locator here'
+
