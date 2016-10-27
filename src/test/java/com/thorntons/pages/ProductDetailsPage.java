@@ -1,5 +1,6 @@
 package com.thorntons.pages;
 
+import com.thorntons.Product;
 import com.thorntons.context.ThorntonsContext;
 import io.magentys.cinnamon.conf.Env;
 import io.magentys.cinnamon.webdriver.collections.PageElementCollection;
@@ -11,31 +12,28 @@ import org.openqa.selenium.support.FindBy;
 import javax.inject.Inject;
 
 
-public class SingleProductPage {
-
-    protected final ThorntonsContext context;
-    protected final Env env;
-
-    public WebDriver webDriver;
-
+public class ProductDetailsPage {
 
     @FindByKey("single-product-page.add-to-cart")
-    public PageElement addToBag;
-
+    private PageElement addToBag;
     @FindByKey("single-product-page.view-cart")
-    public PageElement viewBag;
+    private PageElement viewBag;
+    @FindBy(css = ".product-name")
+    private PageElement productName;
+    @FindBy(css = ".price-sales")
+    private PageElement price;
+    @FindBy(id = "Quantity")
+    private PageElement quantityInput;
     
-
-    @Inject
-    public SingleProductPage(final Env env, WebDriver webDriver, final ThorntonsContext context) {
-        this.env = env;
-        this.webDriver=webDriver;
-        this.context = context;
-    }
 
     public void addtoBag() {
         addToBag.click();
     }
 
     public void viewCart()  { viewBag.click(); }
+
+    public Product getProductDetails() {
+        return new Product(productName.getText(), price.getText(), quantityInput.getText());
+    }
+
 }
