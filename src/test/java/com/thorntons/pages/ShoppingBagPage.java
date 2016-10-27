@@ -1,6 +1,7 @@
 package com.thorntons.pages;
 
 import io.magentys.cinnamon.webdriver.collections.PageElementCollection;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -13,11 +14,12 @@ import io.magentys.cinnamon.webdriver.elements.PageElement;
 import io.magentys.cinnamon.webdriver.support.FindByKey;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ShoppingBagPage {
+public class ShoppingBagPage implements ProductView {
     
-    private List<Product> actualProducts;
+    private List<Product> actualProducts = new ArrayList<>();
 
     protected final ThorntonsContext context;
     protected final Env env;
@@ -39,16 +41,20 @@ public class ShoppingBagPage {
 
     public void checkOut() throws InterruptedException {
         checkOut.click();
-        Thread.sleep(5000);
     }
 
     public void verifyShoppingBag() {
-        for(WebElement aCartRow : cartRow.getWrappedElements()) {
-            String description = aCartRow.findElement(By.cssSelector(".item-details.name")).getText();
-            String price = aCartRow.findElement(By.cssSelector(".item-price")).getText();
-            String quantity = aCartRow.findElement(By.cssSelector(".item-quantity input")).getAttribute("value");
-            actualProducts.add(new Product(description, price));
-        }
+        setActualProducts();
+        List<Product> expectedProducts = context.getProducts();
+        Assert.assertTrue(actualProducts.equals(expectedProducts));
     }
     
+    public void setActualProducts() {
+        for(WebElement aCartRow : cartRow.getWrappedElements()) {
+            String description = aCartRow.findElement(By.cssSelector(".item-details .name")).getText();
+            String price = aCartRow.findElement(By.cssSelector(".item-price")).getText();
+            String quantity = aCartRow.findElement(By.cssSelector(".item-quantity input")).getAttribute("value");
+            actualProducts.add(new Product(description, price, "3"));
+        }
+    }
 }

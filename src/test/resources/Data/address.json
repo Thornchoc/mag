@@ -1,0 +1,12 @@
+{
+  "country" : "United Kingdom",
+  "first_name" : "John",
+  "last_name" : "Smith",
+  "address1" : "Test Street",
+  "city" : "London",
+  "postal_code" : "SE5 8LT",
+  "phone" : "07777777777",
+  "email" : "testuser@usertesting.com",
+  "billing" : "true",
+  "gift" : "false"
+}
