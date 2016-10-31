@@ -16,6 +16,8 @@ default:
     single-product-page.view-cart: '#mini-cart a.button.mini-cart-link-cart.button-mini-cart'
     home-page.checkout-button: '#checkout-form button[value="Checkout"]'
     bag-page.cart-row: '#cart-table .cart-row'
+    multiple-product-page.pagination: '.search-result-options .pagination ul li'
+    
 
   xpath:
     # Add Home Page XPATH locators below:

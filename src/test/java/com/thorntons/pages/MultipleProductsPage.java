@@ -16,6 +16,8 @@ import com.thorntons.context.ThorntonsContext;
 import io.magentys.cinnamon.conf.Env;
 import io.magentys.cinnamon.webdriver.collections.PageElementCollection;
 
+import java.util.List;
+
 public class MultipleProductsPage {
 
     protected final ThorntonsContext context;
@@ -23,8 +25,14 @@ public class MultipleProductsPage {
 
     public WebDriver webDriver;
 
-    @FindBy(css = "#search-result-items li a")
+    @FindBy(css = "#search-result-items li.grid-tile")
+    private PageElementCollection productTile;
+    
+    @FindBy(css = "#search-result-items li.grid-tile a")
     private PageElementCollection products;
+
+    @FindBy(css = ".search-result-options .pagination ul li")
+    private PageElementCollection pages;
 
     @Inject
     public MultipleProductsPage(final Env env, WebDriver webDriver, final ThorntonsContext context) {
@@ -36,14 +44,39 @@ public class MultipleProductsPage {
 
     public void selectProductByName(String name) throws InterruptedException {
         
-        // add details of product to context
-        WebElement productPricing = webDriver.findElement(By.xpath("//a[contains(@title,'" + name + "')]/../following-sibling::div[@class='product-pricing']"));
-        String price = productPricing.getText();
-        Product product = new Product(name, price, "1");
-        product.setName(name);
-        product.setPrice(price);
-        context.addProduct(product);
+        boolean productFound = false;
+        
+        // first find the product on one of the 1 - x product pages
+        for(int i = 0; i < pages.size(); i++) {
+            
+            if (productFound) break;
+            else 
+                if (i != 0 && i < pages.size() -1) {
+                    pages.getWrappedElements().get(i).findElement(By.cssSelector("a")).click();
+                    Thread.sleep(2000); //Replace with something better!
+                }
+            
 
-        products.first(attributeContains("title", name)).click();
+            List<WebElement> productTiles = webDriver.findElements(By.cssSelector("#search-result-items li.grid-tile"));
+            for(int j = 0; j < productTiles.size(); j++) {
+                
+                if(productTiles.get(j).getText().contains(name)) {
+                    // add details of product to context
+                    //WebElement productPricing = webDriver.findElement(By.xpath("//a[contains(@title,'" + name + "')]/../following-sibling::div[@class='product-pricing']"));
+                    WebElement productPricing =
+                            productTiles.get(j).findElement(By.xpath("//a[contains(@title,'" + name + "')]/../following-sibling::div[@class='product-pricing']"));
+                    String price = productPricing.getText();
+                    Product product = new Product(name, price, "1");
+                    product.setName(name);
+                    product.setPrice(price);
+                    context.addProduct(product);
+
+                    products.first(attributeContains("title", name)).click();
+
+                    productFound = true;
+                    break;
+                }
+            }
+        }
     }
 }
