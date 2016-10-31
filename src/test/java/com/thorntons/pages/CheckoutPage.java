@@ -15,9 +15,15 @@ public class CheckoutPage {
     private PageElement newCustomerFormToggle;
     @FindBy(css = ".spc-guest-btn")
     private PageElement checkoutGuestButton;
+    @FindBy(css = ".toggle-logged-in-customer")
+    private PageElement returningCustomerFormToggle;
 
     public void toggleNewCustomerForm(){
         newCustomerFormToggle.waitUntil(displayed.and(enabled)).click();
+    }
+
+    public void toggleReturningCustomerForm(){
+        returningCustomerFormToggle.waitUntil(displayed.and(enabled)).click();
     }
 
     public void clickCheckoutAsGuest(){

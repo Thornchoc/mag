@@ -12,7 +12,7 @@ Feature: Basic Browse and Checkout for one or two products, no bells and whistle
     When I go to Checkout
 
     @wip
-  Scenario: Add product to bag
+  Scenario: Checkout as guest
     Given I have added a product to my shopping bag
     When I checkout as a guest
     And I pay with paypal

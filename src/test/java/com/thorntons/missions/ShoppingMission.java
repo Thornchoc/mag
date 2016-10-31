@@ -28,6 +28,7 @@ public class ShoppingMission {
 
     public void addToBasket() {
         context.setProduct(productDetailsPage.getProductDetails());
-        productDetailsPage.addtoBag();
+        productDetailsPage.clickAddToBag();
+        productDetailsPage.dialogAddPersonalMessage("no");
     }
 }

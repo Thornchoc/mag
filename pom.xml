@@ -203,6 +203,16 @@
             <version>2.2.2</version>
             <scope>test</scope>
         </dependency>
+		<dependency>
+			<groupId>io.magentys</groupId>
+			<artifactId>cherry</artifactId>
+			<version>1.0.7</version>
+		</dependency>
+		<dependency>
+			<groupId>io.magentys</groupId>
+			<artifactId>cherry-java8</artifactId>
+			<version>1.0.7</version>
+		</dependency>
     </dependencies>
 
 	<profiles>

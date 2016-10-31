@@ -17,7 +17,7 @@ public class SingleProductPageStepDefs {
 
     @When("^I add (?:it|product) to the bag$")
     public void i_add_it_to_the_bag() throws Throwable {
-        productDetailsPage.addtoBag();
+        productDetailsPage.clickAddToBag();
     }
 
     @When("^I view my bag$")

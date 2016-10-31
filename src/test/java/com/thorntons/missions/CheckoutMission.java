@@ -31,12 +31,16 @@ public class CheckoutMission {
     public void checkoutAsGuest() {
         checkoutPage.toggleNewCustomerForm();
         checkoutPage.clickCheckoutAsGuest();
+    }
+
+    public void checkoutAsReturningCustomer(String email, String pwd){
+        checkoutPage.toggleReturningCustomerForm();
 
     }
 
     public void completeDeliveryForm(){
         UserDetails details = new UserDetails();
-        details.initDefaultDetails();
+        details.generateUniqueDetails();
         deliveryForm.completeDeliveryForm(details);
     }
 }

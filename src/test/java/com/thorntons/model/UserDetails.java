@@ -8,13 +8,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
-
-import static org.bouncycastle.asn1.x500.style.RFC4519Style.c;
 
 public class UserDetails {
 
-    public UserDetails initDefaultDetails(){
+    public UserDetails generateUniqueDetails(){
         setCountry("UNITED KINGDOM");
         setFirstName("John");
         setLastName("Smith");
@@ -22,7 +19,7 @@ public class UserDetails {
         setCity("London");
         setPostalCode("SE5 8LT");
         setPhone("07000000000");
-        setEmail(String.format("test%s@testuser.com", UUID.randomUUID().toString()));
+        setEmail(String.format("test%s@testuser.com", System.nanoTime()));
         return this;
     }
 

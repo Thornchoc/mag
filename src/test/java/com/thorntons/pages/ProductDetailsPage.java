@@ -4,12 +4,17 @@ import com.thorntons.Product;
 import com.thorntons.context.ThorntonsContext;
 import io.magentys.cinnamon.conf.Env;
 import io.magentys.cinnamon.webdriver.collections.PageElementCollection;
+import io.magentys.cinnamon.webdriver.conditions.Conditions;
+import io.magentys.cinnamon.webdriver.elements.AttributeContainsCondition;
 import io.magentys.cinnamon.webdriver.elements.PageElement;
 import io.magentys.cinnamon.webdriver.support.FindByKey;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import javax.inject.Inject;
+
+import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.attributeContains;
+import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.displayed;
 
 
 public class ProductDetailsPage {
@@ -24,9 +29,11 @@ public class ProductDetailsPage {
     private PageElement price;
     @FindBy(id = "Quantity")
     private PageElement quantityInput;
+    @FindBy(css = ".tag-reminder-btn")
+    private PageElementCollection addMessageDialogOptions;
     
 
-    public void addtoBag() {
+    public void clickAddToBag() {
         addToBag.click();
     }
 
@@ -36,4 +43,7 @@ public class ProductDetailsPage {
         return new Product(productName.getText(), price.getText(), quantityInput.getText());
     }
 
+    public void dialogAddPersonalMessage(String option) {
+        addMessageDialogOptions.first(attributeContains("class", option)).waitUntil(displayed).click();
+    }
 }
