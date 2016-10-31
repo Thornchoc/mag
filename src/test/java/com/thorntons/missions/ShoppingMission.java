@@ -22,7 +22,7 @@ public class ShoppingMission {
     public void Search(String searchTerm){
         headerComponent
                 .clickSearchIcon()
-                .inputSearchTerm("Irresistible Belgian Chocolate Truffles")
+                .inputSearchTerm(searchTerm)
                 .submitSearch();
     }
 
