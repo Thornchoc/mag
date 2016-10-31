@@ -30,7 +30,7 @@ public class Hooks {
     }
 
     // The website URL is automatically navigated to before each scenario tagged with @web
-    @Before("@web")
+    @Before("@thorntons")
     public void openWebSite() throws Throwable {
         open(env.config.getString("thorntons-url"));
         webDriver.manage().window().maximize();

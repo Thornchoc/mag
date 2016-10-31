@@ -15,7 +15,7 @@ default:
     home-page.top-banner: '.top-banner'
     single-product-page.view-cart: '#mini-cart a.button.mini-cart-link-cart.button-mini-cart'
     home-page.checkout-button: '#checkout-form button[value="Checkout"]'
-    bag-page.cart-row: '#cart-table .cart-row'
+    bag-page.cart-row: '#cart-table .cart-row'   
 
   xpath:
     # Add Home Page XPATH locators below:
