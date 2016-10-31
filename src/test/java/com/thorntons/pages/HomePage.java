@@ -36,8 +36,6 @@ public class HomePage {
     
     @FindBy(css = "#navigation ul li a")
     private PageElementCollection categoriesAndTypes;
-
-    //a[contains(@title,'Boot')]/../following-sibling::div[@class='product-pricing']
     
     
     @Inject
@@ -61,15 +59,5 @@ public class HomePage {
 
     public void selectType(String type) throws InterruptedException {
         categoriesAndTypes.first(attributeContains("href", "Thorntons/" + type)).click();
-        //webDriver.findElement(By.cssSelector("a[href$=\"Thorntons/" + type + "\"]")).click();
     }
-
-    /*
-    @Override
-    public void enterSearchTerm(final String searchTerm) {
-        // Enter the search term.
-        searchInput.waitUntil(clickable.and(positionUnchanged(500))).replaceText(searchTerm);;
-        context.setSearchFilter(searchTerm);
-    }
-    */
 }

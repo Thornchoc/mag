@@ -25,12 +25,6 @@ public class MultipleProductsPage {
 
     public WebDriver webDriver;
 
-    @FindBy(css = "#search-result-items li.grid-tile")
-    private PageElementCollection productTile;
-    
-    @FindBy(css = "#search-result-items li.grid-tile a")
-    private PageElementCollection products;
-
     @FindBy(css = ".search-result-options .pagination ul li")
     private PageElementCollection pages;
 
@@ -71,7 +65,7 @@ public class MultipleProductsPage {
                     product.setPrice(price);
                     context.addProduct(product);
 
-                    products.first(attributeContains("title", name)).click();
+                    productTiles.get(j).findElement(By.xpath("//a[contains(@title,'" + name + "')]")).click();
 
                     productFound = true;
                     break;
