@@ -2,7 +2,6 @@
 
 Feature: Checkout as guest with the different payment methods
 
-  @wip
   Scenario: Checkout as Guest with paypal
     Given I have added a product to my shopping bag
     When I checkout as a guest

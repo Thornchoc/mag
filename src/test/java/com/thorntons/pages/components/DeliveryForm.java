@@ -25,8 +25,10 @@ public class DeliveryForm {
     private PageElement phoneInput;
     @FindBy(id = "dwfrm_singleshipping_shippingAddress_email_emailAddress")
     private PageElement emailInput;
+    @FindBy(id = "dwfrm_singleshipping_shippingAddress_useAsBillingAddress")
+    private PageElement sameAsBillingCheckBox;
 
-    public void completeDeliveryForm(UserDetails details){
+    public void completeDeliveryForm(UserDetails details, boolean sameAsBilling){
         selectCountry(details.getCountry());
         enterFirstName(details.getFirstName());
         enterLastName(details.getLastName());
@@ -35,6 +37,11 @@ public class DeliveryForm {
         enterPostCode(details.getPostalCode());
         enterPhoneNumber(details.getPhone());
         enterEmailAddress(details.getEmail());
+        if(sameAsBilling){
+            selectSameAsDelivery();
+            return;
+        }
+        clickContinue();
     }
 
     public void selectCountry(String country){
@@ -67,6 +74,11 @@ public class DeliveryForm {
 
     public void enterEmailAddress(String email){
         emailInput.typeText(email);
+    }
+
+    public void selectSameAsDelivery(){
+        if(!sameAsBillingCheckBox.isSelected())
+            sameAsBillingCheckBox.click();
     }
 
 }

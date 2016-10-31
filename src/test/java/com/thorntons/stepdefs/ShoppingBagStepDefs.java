@@ -33,7 +33,7 @@ public class ShoppingBagStepDefs {
     public void i_have_added_a_product_to_my_shopping_bag() throws Throwable {
         shoppingMission.Search("Orange Crisp Chocolate Block");
         shoppingMission.addToBasket();
-        
+
     }
 
 }

@@ -41,6 +41,12 @@ public class CheckoutMission {
     public void completeDeliveryForm(){
         UserDetails details = new UserDetails();
         details.generateUniqueDetails();
-        deliveryForm.completeDeliveryForm(details);
+        deliveryForm.completeDeliveryForm(details, true);
+
+    }
+
+    public void completeBillingForm(boolean sameAsDelivery){
+
+
     }
 }
