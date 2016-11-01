@@ -31,7 +31,7 @@ public class ShoppingBagStepDefs {
 
     @Given("^I have added a product to my shopping bag$")
     public void i_have_added_a_product_to_my_shopping_bag() throws Throwable {
-        shoppingMission.Search("Orange Crisp Chocolate Block");
+        shoppingMission.Search("Original Special Toffee Box");
         shoppingMission.addToBasket();
 
     }

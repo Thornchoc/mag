@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class UserDetails {
 
-    public UserDetails generateUniqueDetails(){
+    public UserDetails generateUniqueUser(){
         setCountry("UNITED KINGDOM");
         setFirstName("John");
         setLastName("Smith");
@@ -20,6 +20,7 @@ public class UserDetails {
         setPostalCode("SE5 8LT");
         setPhone("07000000000");
         setEmail(String.format("test%s@testuser.com", System.nanoTime()));
+        setPassword("password");
         return this;
     }
 
@@ -43,8 +44,17 @@ public class UserDetails {
     private String billing;
     @JsonProperty("gift")
     private String gift;
+    private String password;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    public String getPassword(){
+        return password;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
 
     /**
      *

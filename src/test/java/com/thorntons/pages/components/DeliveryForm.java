@@ -81,4 +81,8 @@ public class DeliveryForm {
             sameAsBillingCheckBox.click();
     }
 
+    public void clickContinue(){
+
+    }
+
 }

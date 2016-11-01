@@ -2,6 +2,7 @@
 
 Feature: Checkout as new user with the different payment methods
 
+  @wip
   Scenario: Checkout as new user with paypal
     Given I have added a product to my shopping bag
     When I checkout as a new user

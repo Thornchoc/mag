@@ -19,7 +19,18 @@ public class CheckoutStepDefs {
         checkoutMission.goToCheckout();
         checkoutMission.checkoutAsGuest();
         checkoutMission.completeDeliveryForm();
-        Thread.sleep(10000);
+    }
+
+    @When("^I checkout as a existing user$")
+    public void i_checkout_as_a_existing_user() throws Throwable {
+        checkoutMission.goToCheckout();
+        checkoutMission.checkoutAsReturningCustomer("james.goddard@magentys.io", "password");
+    }
+
+    @When("^I checkout as a new user$")
+    public void i_checkout_as_a_new_user() throws Throwable {
+        checkoutMission.goToCheckout();
+        checkoutMission.checkoutAsNewUser();
     }
 
 }
