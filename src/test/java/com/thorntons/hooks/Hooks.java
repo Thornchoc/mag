@@ -33,8 +33,13 @@ public class Hooks {
     @Before("@thorntons")
     public void openWebSite() throws Throwable {
         open(env.config.getString("thorntons-url"));
-        webDriver.manage().window().maximize();
-        Browser.waitUntil(Conditions.readyState(ReadyState.COMPLETE));
+        maximiseHack();
         assertThat("Cannot open the website", homePage.topBanner.waitUntil(displayed).isPresent(), equalTo(true));
+    }
+
+    public void maximiseHack(){
+        webDriver.manage().window().maximize();
+        Browser.refresh();
+        Browser.waitUntil(Conditions.readyState(ReadyState.COMPLETE));
     }
 }

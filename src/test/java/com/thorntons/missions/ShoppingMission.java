@@ -19,11 +19,20 @@ public class ShoppingMission {
         this.productDetailsPage = productDetailsPage;
     }
 
-    public void Search(String searchTerm){
+    public void search(String searchTerm){
         headerComponent
                 .clickSearchIcon()
-                .inputSearchTerm(searchTerm)
-                .submitSearch();
+                .inputSearchTerm(searchTerm);
+    }
+
+    public void searchAndSubmit(String searchTerm){
+        search(searchTerm);
+        headerComponent.submitSearch();
+    }
+
+    public void searchAndSelect(String searchTerm){
+        search(searchTerm);
+        headerComponent.selectProductSuggestion(searchTerm);
     }
 
     public void addToBasket() {

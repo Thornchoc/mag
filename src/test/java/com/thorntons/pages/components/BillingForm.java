@@ -18,7 +18,7 @@ public class BillingForm {
     }
 
     public void clickPaypalPayNowButton(){
-        paypalPayNowButton.waitUntil(displayed.and(enabled));
+        paypalPayNowButton.waitUntil(displayed.and(enabled)).click();
     }
 
 }

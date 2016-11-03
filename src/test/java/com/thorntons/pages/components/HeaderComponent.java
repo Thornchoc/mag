@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import static io.magentys.cinnamon.webdriver.conditions.Conditions.ajaxFinished;
 import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.displayed;
 import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.enabled;
+import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.textContains;
 
 public class HeaderComponent {
 
@@ -20,6 +21,8 @@ public class HeaderComponent {
     private PageElement searchSubmitBtn;
     @FindBy(css = ".basket-icon")
     private PageElement basketIcon;
+    @FindBy(css=".product-link")
+    private PageElement productSuggestion;
 
     public HeaderComponent clickSearchIcon(){
         searchIcon.waitUntil(enabled).click();
@@ -36,6 +39,11 @@ public class HeaderComponent {
         searchSubmitBtn.waitUntil(displayed.and(enabled)).click();
         Browser.waitUntil(Conditions.readyState(ReadyState.COMPLETE));
         return this;
+    }
+
+    public void selectProductSuggestion(String product){
+        productSuggestion.waitUntil(textContains(product).and(displayed)).click();
+        Browser.waitUntil(Conditions.readyState(ReadyState.COMPLETE));
     }
 
     public void hoverOverCartIcon(){
