@@ -12,7 +12,7 @@ import java.util.Map;
 public class UserDetails {
 
     public UserDetails generateUniqueUser(){
-        setCountry("UNITED KINGDOM");
+        setCountry("United Kingdom");
         setFirstName("John");
         setLastName("Smith");
         setAddress1("10 test road");

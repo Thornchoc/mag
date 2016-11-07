@@ -3,10 +3,13 @@ package com.thorntons.stepdefs;
 import com.thorntons.missions.CheckoutMission;
 import cucumber.api.java.en.When;
 
+import javax.inject.Inject;
+
 public class PaymentStepDefs {
 
     private CheckoutMission checkoutMission;
 
+    @Inject
     public PaymentStepDefs(CheckoutMission checkoutMission){
         this.checkoutMission = checkoutMission;
     }

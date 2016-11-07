@@ -1,6 +1,7 @@
 package com.thorntons.pages.components;
 
 import com.thorntons.model.UserDetails;
+import gherkin.lexer.Pa;
 import io.magentys.cinnamon.webdriver.elements.PageElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -25,10 +26,16 @@ public class DeliveryForm {
     private PageElement phoneInput;
     @FindBy(id = "dwfrm_singleshipping_shippingAddress_email_emailAddress")
     private PageElement emailInput;
+    @FindBy(name = "dwfrm_singleshipping_shippingAddress_save")
+    private PageElement continueButton;
+
+    //checkbox is partially covered by label element so not clickable at point exception is thrown
     @FindBy(id = "dwfrm_singleshipping_shippingAddress_useAsBillingAddress")
     private PageElement sameAsBillingCheckBox;
+    @FindBy(css = ".form-row.label-inline.form-indent>label")
+    private PageElement sameAsBillingLabel;
 
-    public void completeDeliveryForm(UserDetails details, boolean sameAsBilling){
+    public void completeDeliveryForm(UserDetails details, boolean sameAsBilling) {
         selectCountry(details.getCountry());
         enterFirstName(details.getFirstName());
         enterLastName(details.getLastName());
@@ -37,52 +44,50 @@ public class DeliveryForm {
         enterPostCode(details.getPostalCode());
         enterPhoneNumber(details.getPhone());
         enterEmailAddress(details.getEmail());
-        if(sameAsBilling){
-            selectSameAsDelivery();
-            return;
+        if (sameAsBilling) {
+            selectSameAsBilling();
         }
         clickContinue();
     }
 
-    public void selectCountry(String country){
-        countryDropDown.waitUntil(displayed.and(enabled)).select().byVisibleText(country);
+    public void selectCountry(String country) {
+        countryDropDown.waitUntil(displayed.and(enabled)).select().byVisibleTextContains(country);
     }
 
-    public void enterFirstName(String fName){
+    public void enterFirstName(String fName) {
         firstNameInput.typeText(fName);
     }
 
-    public void enterLastName(String lName){
+    public void enterLastName(String lName) {
         lastNameInput.typeText(lName);
     }
 
-    public void enterAddress(String address){
+    public void enterAddress(String address) {
         address1Input.typeText(address);
     }
 
-    public void enterCity(String city){
+    public void enterCity(String city) {
         cityInput.typeText(city);
     }
 
-    public void enterPostCode(String postCode){
+    public void enterPostCode(String postCode) {
         postCodeInput.typeText(postCode);
     }
 
-    public void enterPhoneNumber(String number){
+    public void enterPhoneNumber(String number) {
         phoneInput.typeText(number);
     }
 
-    public void enterEmailAddress(String email){
+    public void enterEmailAddress(String email) {
         emailInput.typeText(email);
     }
 
-    public void selectSameAsDelivery(){
-        if(!sameAsBillingCheckBox.isSelected())
-            sameAsBillingCheckBox.click();
+    public void selectSameAsBilling() {
+        sameAsBillingLabel.click();
     }
 
-    public void clickContinue(){
-
+    public void clickContinue() {
+        continueButton.waitUntil(enabled).click();
     }
 
 }

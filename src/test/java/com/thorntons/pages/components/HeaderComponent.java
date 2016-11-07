@@ -7,9 +7,7 @@ import io.magentys.cinnamon.webdriver.elements.PageElement;
 import org.openqa.selenium.support.FindBy;
 
 import static io.magentys.cinnamon.webdriver.conditions.Conditions.ajaxFinished;
-import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.displayed;
-import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.enabled;
-import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.textContains;
+import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.*;
 
 public class HeaderComponent {
 
@@ -30,7 +28,10 @@ public class HeaderComponent {
     }
 
     public HeaderComponent inputSearchTerm(String searchTerm){
-        searchInput.waitUntil(enabled.and(displayed)).typeText(searchTerm);
+        searchInput.waitUntil(enabled.and(displayed)).click();
+        for(char c : searchTerm.toCharArray()){
+            searchInput.typeText(Character.toString(c));
+        }
         Browser.waitUntil(ajaxFinished);
         return this;
     }
@@ -42,7 +43,7 @@ public class HeaderComponent {
     }
 
     public void selectProductSuggestion(String product){
-        productSuggestion.waitUntil(textContains(product).and(displayed)).click();
+        productSuggestion.waitUntil(displayed.and(enabled).and(textContainsIgnoreCase(product))).click();
         Browser.waitUntil(Conditions.readyState(ReadyState.COMPLETE));
     }
 
