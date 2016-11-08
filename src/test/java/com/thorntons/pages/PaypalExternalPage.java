@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.displayed;
 import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.enabled;
 
-public class PaypalPage {
+public class PaypalExternalPage {
 
     @FindBy(id = "email")
     private PageElement emailInput;
@@ -21,7 +21,14 @@ public class PaypalPage {
     private PageElement confirmButton;
 
     public void enterEmail(String email){
-        emailInput.waitUntil(displayed.and(enabled)).typeText(email);
+        try{
+        Thread.sleep(5000);
+        emailInput.waitUntil(displayed.and(enabled)).click();
+        emailInput.clear();
+        emailInput.typeText(email);}
+        catch(InterruptedException e){
+            System.out.println(e);
+        }
     }
 
     public void enterPassword(String password){
