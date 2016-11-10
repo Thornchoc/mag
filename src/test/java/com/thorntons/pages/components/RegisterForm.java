@@ -1,8 +1,13 @@
 package com.thorntons.pages.components;
 
 import com.thorntons.model.UserDetails;
+import io.magentys.cinnamon.webdriver.Browser;
+import io.magentys.cinnamon.webdriver.ReadyState;
+import io.magentys.cinnamon.webdriver.conditions.Conditions;
 import io.magentys.cinnamon.webdriver.elements.PageElement;
 import org.openqa.selenium.support.FindBy;
+
+import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.enabled;
 
 public class RegisterForm {
 
@@ -18,6 +23,8 @@ public class RegisterForm {
     private PageElement passwordInput;
     @FindBy(css = "[id^=dwfrm_profile_login_passwordconfirm]")
     private PageElement confirmPasswordInput;
+    @FindBy(css = ".spc-registration-btn")
+    private PageElement continueButton;
 
     public void completeRegisterForm(UserDetails details){
         enterFirstName(details.getFirstName());
@@ -29,7 +36,7 @@ public class RegisterForm {
     }
 
     private void enterConfirmPassword(String password) {
-        confirmEmailInput.typeText(password);
+        confirmPasswordInput.typeText(password);
     }
 
     private void enterPassword(String password) {
@@ -53,5 +60,8 @@ public class RegisterForm {
     }
 
 
-
+    public void clickContinueButton() {
+        continueButton.waitUntil(enabled).click();
+        Browser.waitUntil(Conditions.readyState(ReadyState.COMPLETE));
+    }
 }

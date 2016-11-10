@@ -2,6 +2,9 @@ package com.thorntons.pages.components;
 
 import com.thorntons.model.UserDetails;
 import gherkin.lexer.Pa;
+import io.magentys.cinnamon.webdriver.Browser;
+import io.magentys.cinnamon.webdriver.ReadyState;
+import io.magentys.cinnamon.webdriver.conditions.Conditions;
 import io.magentys.cinnamon.webdriver.elements.PageElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -29,7 +32,7 @@ public class DeliveryForm {
     @FindBy(name = "dwfrm_singleshipping_shippingAddress_save")
     private PageElement continueButton;
 
-    //checkbox is partially covered by label element so not clickable at point exception is thrown
+    //use label - checkbox is partially covered by label element so not clickable at point exception is thrown
     @FindBy(id = "dwfrm_singleshipping_shippingAddress_useAsBillingAddress")
     private PageElement sameAsBillingCheckBox;
     @FindBy(css = ".form-row.label-inline.form-indent>label")
@@ -79,6 +82,7 @@ public class DeliveryForm {
     }
 
     public void enterEmailAddress(String email) {
+        emailInput.clear();
         emailInput.typeText(email);
     }
 
@@ -87,7 +91,8 @@ public class DeliveryForm {
     }
 
     public void clickContinue() {
-        continueButton.waitUntil(enabled).click();
+        continueButton.waitUntil(displayed.and(enabled)).click();
+        Browser.waitUntil(Conditions.readyState(ReadyState.COMPLETE));
     }
 
 }

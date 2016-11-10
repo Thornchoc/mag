@@ -21,9 +21,10 @@ public class CheckoutMission {
     private PaypalExternalPage paypalExternalPage;
     private OrderReview orderReview;
     private OrderSuccessfulPage orderSuccessfulPage;
+    private RegisterForm registerForm;
 
     @Inject
-    public CheckoutMission(HeaderComponent headerComponent, MiniCartComponent miniCartComponent, CheckoutPage checkoutPage, DeliveryForm deliveryForm, BillingForm billingForm, LoginForm loginForm, PaypalExternalPage paypalExternalPage, OrderReview orderReview, OrderSuccessfulPage orderSuccessfulPage) {
+    public CheckoutMission(HeaderComponent headerComponent, MiniCartComponent miniCartComponent, CheckoutPage checkoutPage, DeliveryForm deliveryForm, BillingForm billingForm, LoginForm loginForm, PaypalExternalPage paypalExternalPage, OrderReview orderReview, OrderSuccessfulPage orderSuccessfulPage, RegisterForm registerForm) {
         this.headerComponent = headerComponent;
         this.miniCartComponent = miniCartComponent;
         this.checkoutPage = checkoutPage;
@@ -33,6 +34,7 @@ public class CheckoutMission {
         this.paypalExternalPage = paypalExternalPage;
         this.orderReview = orderReview;
         this.orderSuccessfulPage = orderSuccessfulPage;
+        this.registerForm = registerForm;
     }
 
     public void goToCheckout() {
@@ -73,7 +75,9 @@ public class CheckoutMission {
         checkoutPage.toggleNewCustomerForm();
         UserDetails details = new UserDetails();
         details.generateUniqueUser();
-
+        registerForm.completeRegisterForm(details);
+        registerForm.clickContinueButton();
+        deliveryForm.completeDeliveryForm(details, true);
     }
 
     public void enterPaymentCardDetails(String cardType) {
