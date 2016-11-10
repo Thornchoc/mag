@@ -37,8 +37,7 @@ public class ShoppingBagStepDefs {
 
     @Given("^I have added a product to my shopping bag$")
     public void i_have_added_a_product_to_my_shopping_bag() throws Throwable {
-        //shoppingMission.searchAndSelect("Original Special Toffee Box");
-        webDriver.get("https://staging-store-thorntons.demandware.net/s/Thorntons/get-well-soon-gifts/original-special-toffee-box-525g-3311.html#q=Original+Special+Toffee+Box+(525g)+&lang=default&start=2");
+        shoppingMission.searchAndSubmit("3311");
         Browser.waitUntil(Conditions.readyState(ReadyState.COMPLETE));
         shoppingMission.addToBasket();
 

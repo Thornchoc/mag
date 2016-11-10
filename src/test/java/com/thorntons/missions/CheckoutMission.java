@@ -7,6 +7,7 @@ import com.thorntons.pages.OrderSuccessfulPage;
 import com.thorntons.pages.PaypalExternalPage;
 import com.thorntons.pages.components.*;
 import com.thorntons.services.CardDetailsService;
+import io.magentys.cinnamon.webdriver.Browser;
 
 import javax.inject.Inject;
 
