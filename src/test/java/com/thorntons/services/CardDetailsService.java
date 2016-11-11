@@ -13,6 +13,8 @@ public class CardDetailsService {
                 cardDetails = getVisaDetails();
             case "Amex" :
                 cardDetails = getAmexDetails();
+            case "MasterCard":
+                cardDetails = getMasterCardDetails();
         }
         if(cardDetails == null)
             throw new RuntimeException("no details found. check value of card type supplied");
@@ -32,6 +34,14 @@ public class CardDetailsService {
         cardDetails.setCardNumber("3742 4545 5400 001");
         cardDetails.setCardType("American Express");
         cardDetails.setcVV("0000");
+        return cardDetails;
+    }
+
+    private CardDetails getMasterCardDetails(){
+        CardDetails cardDetails = new CardDetails();
+        cardDetails.setCardNumber("5453 0100 0008 3303");
+        cardDetails.setCardType("MasterCard");
+        cardDetails.setcVV("000");
         return cardDetails;
     }
 

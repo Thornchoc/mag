@@ -23,7 +23,7 @@ public class PaymentStepDefs {
         checkoutMission.payWithPaypal("aimee.white-buyer@thorntons.co.uk", "chocolate");
     }
 
-    @When("^I pay with (Visa|Amex)$")
+    @When("^I pay with (Visa|Amex|MasterCard)$")
     public void i_pay_with_visa(String cardType) throws Throwable {
         checkoutMission.enterPaymentCardDetails(cardType);
         checkoutMission.cofirmAndCompleteOrder();
