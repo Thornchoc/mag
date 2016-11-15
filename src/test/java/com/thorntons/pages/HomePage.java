@@ -1,32 +1,23 @@
 package com.thorntons.pages;
 
-import com.thorntons.context.ThorntonsContext;
+import com.thorntons.context.ScenarioContext;
 import io.magentys.cinnamon.conf.Env;
 import io.magentys.cinnamon.webdriver.Browser;
-import io.magentys.cinnamon.webdriver.actions.Action;
-import io.magentys.cinnamon.webdriver.actions.synthetic.SyntheticHoverAction;
 import io.magentys.cinnamon.webdriver.collections.PageElementCollection;
 import io.magentys.cinnamon.webdriver.elements.PageElement;
 import io.magentys.cinnamon.webdriver.support.FindByKey;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import io.magentys.cinnamon.webdriver.actions.basic.*;
 
 import javax.inject.Inject;
 
-import static io.magentys.cinnamon.webdriver.Browser.fireEvent;
-import static io.magentys.cinnamon.webdriver.Browser.switchTo;
-import static io.magentys.cinnamon.webdriver.Timeouts.defaultTimeout;
 import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.*;
 
 public class HomePage {
 
     protected static final String THORNTONS_URL = "thorntons-url";
 
-    protected final ThorntonsContext context;
+    protected final ScenarioContext context;
     protected final Env env;
     
     public WebDriver webDriver;
@@ -39,7 +30,7 @@ public class HomePage {
     
     
     @Inject
-    public HomePage(final Env env, WebDriver webDriver, final ThorntonsContext context) {
+    public HomePage(final Env env, WebDriver webDriver, final ScenarioContext context) {
         this.env = env;
         this.webDriver=webDriver;
         this.context = context;

@@ -11,7 +11,7 @@ import io.magentys.cinnamon.webdriver.Browser;
 
 import javax.inject.Inject;
 
-public class CheckoutMission {
+public class CheckoutMissions {
 
     private HeaderComponent headerComponent;
     private MiniCartComponent miniCartComponent;
@@ -25,7 +25,7 @@ public class CheckoutMission {
     private RegisterForm registerForm;
 
     @Inject
-    public CheckoutMission(HeaderComponent headerComponent, MiniCartComponent miniCartComponent, CheckoutPage checkoutPage, DeliveryForm deliveryForm, BillingForm billingForm, LoginForm loginForm, PaypalExternalPage paypalExternalPage, OrderReview orderReview, OrderSuccessfulPage orderSuccessfulPage, RegisterForm registerForm) {
+    public CheckoutMissions(HeaderComponent headerComponent, MiniCartComponent miniCartComponent, CheckoutPage checkoutPage, DeliveryForm deliveryForm, BillingForm billingForm, LoginForm loginForm, PaypalExternalPage paypalExternalPage, OrderReview orderReview, OrderSuccessfulPage orderSuccessfulPage, RegisterForm registerForm) {
         this.headerComponent = headerComponent;
         this.miniCartComponent = miniCartComponent;
         this.checkoutPage = checkoutPage;

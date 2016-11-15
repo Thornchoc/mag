@@ -7,6 +7,7 @@ import io.magentys.cinnamon.webdriver.conditions.Conditions;
 import io.magentys.cinnamon.webdriver.elements.PageElement;
 import org.openqa.selenium.support.FindBy;
 
+import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.displayed;
 import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.enabled;
 
 public class RegisterForm {
@@ -25,6 +26,8 @@ public class RegisterForm {
     private PageElement confirmPasswordInput;
     @FindBy(css = ".spc-registration-btn")
     private PageElement continueButton;
+    @FindBy(name = "dwfrm_profile_confirm")
+    private PageElement applyButton;
 
     public void completeRegisterForm(UserDetails details){
         enterFirstName(details.getFirstName());
@@ -44,7 +47,7 @@ public class RegisterForm {
     }
 
     public void enterFirstName(String fName){
-        firstNameInput.typeText(fName);
+        firstNameInput.waitUntil(displayed.and(enabled)).typeText(fName);
     }
 
     public void enterLastName(String lName){
@@ -62,6 +65,11 @@ public class RegisterForm {
 
     public void clickContinueButton() {
         continueButton.waitUntil(enabled).click();
+        Browser.waitUntil(Conditions.readyState(ReadyState.COMPLETE));
+    }
+
+    public void clickApplyButton() {
+        applyButton.waitUntil(enabled).click();
         Browser.waitUntil(Conditions.readyState(ReadyState.COMPLETE));
     }
 }

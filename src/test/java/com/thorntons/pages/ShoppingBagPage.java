@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 
 import com.google.inject.Inject;
 import com.thorntons.Product;
-import com.thorntons.context.ThorntonsContext;
+import com.thorntons.context.ScenarioContext;
 
 import io.magentys.cinnamon.conf.Env;
 import io.magentys.cinnamon.webdriver.elements.PageElement;
@@ -21,7 +21,7 @@ public class ShoppingBagPage implements ProductView {
     
     private List<Product> actualProducts = new ArrayList<>();
 
-    protected final ThorntonsContext context;
+    protected final ScenarioContext context;
     protected final Env env;
 
     public WebDriver webDriver;
@@ -33,7 +33,7 @@ public class ShoppingBagPage implements ProductView {
     public PageElementCollection cartRow;
 
     @Inject
-    public ShoppingBagPage(ThorntonsContext context, WebDriver webDriver, Env env) {
+    public ShoppingBagPage(ScenarioContext context, WebDriver webDriver, Env env) {
         this.context = context;
         this.webDriver=webDriver;
         this.env = env;

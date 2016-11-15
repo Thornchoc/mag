@@ -2,7 +2,7 @@ package com.thorntons.stepdefs;
 
 
 import com.google.inject.Inject;
-import com.thorntons.missions.ShoppingMission;
+import com.thorntons.missions.ShoppingMissions;
 import com.thorntons.pages.ShoppingBagPage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -15,13 +15,13 @@ import org.openqa.selenium.WebDriver;
 public class ShoppingBagStepDefs {
     
     private final ShoppingBagPage shoppingBagPage;
-    private final ShoppingMission shoppingMission;
+    private final ShoppingMissions shoppingMissions;
     private WebDriver webDriver;
 
     @Inject
-    public ShoppingBagStepDefs(ShoppingBagPage shoppingBagPage, final ShoppingMission shoppingMission, WebDriver webDriver) {
+    public ShoppingBagStepDefs(ShoppingBagPage shoppingBagPage, final ShoppingMissions shoppingMissions, WebDriver webDriver) {
         this.shoppingBagPage = shoppingBagPage;
-        this.shoppingMission = shoppingMission;
+        this.shoppingMissions = shoppingMissions;
         this.webDriver = webDriver;
     }
 
@@ -37,9 +37,9 @@ public class ShoppingBagStepDefs {
 
     @Given("^I have added a product to my shopping bag$")
     public void i_have_added_a_product_to_my_shopping_bag() throws Throwable {
-        shoppingMission.searchAndSubmit("3311");
+        shoppingMissions.searchAndSubmit("3311");
         Browser.waitUntil(Conditions.readyState(ReadyState.COMPLETE));
-        shoppingMission.addToBasket();
+        shoppingMissions.addToBasket();
 
     }
 

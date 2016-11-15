@@ -1,8 +1,6 @@
 package com.thorntons.pages;
 
 
-import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.attributeContains;
-
 import javax.inject.Inject;
 
 import org.openqa.selenium.By;
@@ -11,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.thorntons.Product;
-import com.thorntons.context.ThorntonsContext;
+import com.thorntons.context.ScenarioContext;
 
 import io.magentys.cinnamon.conf.Env;
 import io.magentys.cinnamon.webdriver.collections.PageElementCollection;
@@ -20,7 +18,7 @@ import java.util.List;
 
 public class MultipleProductsPage {
 
-    protected final ThorntonsContext context;
+    protected final ScenarioContext context;
     protected final Env env;
 
     public WebDriver webDriver;
@@ -29,7 +27,7 @@ public class MultipleProductsPage {
     private PageElementCollection pages;
 
     @Inject
-    public MultipleProductsPage(final Env env, WebDriver webDriver, final ThorntonsContext context) {
+    public MultipleProductsPage(final Env env, WebDriver webDriver, final ScenarioContext context) {
         this.env = env;
         this.webDriver=webDriver;
         this.context = context;
