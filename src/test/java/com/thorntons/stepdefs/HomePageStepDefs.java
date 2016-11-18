@@ -37,6 +37,11 @@ public class HomePageStepDefs {
         homePage.selectType(typeDashesForSpaces.toLowerCase());
     }
     
+    @Given("^I want to find a shop near me$")
+    public void i_want_to_find_a_shop_near_me() throws Throwable {
+        homePage.selectOurShops();
+    }
+    
 
     /**
      * * Encodes particular characters for URL's. At the moment only the space character.
