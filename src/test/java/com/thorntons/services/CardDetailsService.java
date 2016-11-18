@@ -11,10 +11,13 @@ public class CardDetailsService {
         switch (cardType) {
             case "Visa":
                 cardDetails = getVisaDetails();
-            case "Amex" :
+                break;
+            case "Amex":
                 cardDetails = getAmexDetails();
+                break;
             case "MasterCard":
                 cardDetails = getMasterCardDetails();
+                break;
         }
         if(cardDetails == null)
             throw new RuntimeException("no details found. check value of card type supplied");

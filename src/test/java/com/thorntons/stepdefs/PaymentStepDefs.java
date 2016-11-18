@@ -24,7 +24,7 @@ public class PaymentStepDefs {
     }
 
     @When("^I pay with (Visa|Amex|MasterCard)$")
-    public void i_pay_with_visa(String cardType) throws Throwable {
+    public void i_pay_with_card(String cardType) throws Throwable {
         checkoutMissions.enterPaymentCardDetails(cardType);
         checkoutMissions.cofirmAndCompleteOrder();
     }

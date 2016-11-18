@@ -21,6 +21,12 @@ public class AccountStepDefs {
         this.context = context;
     }
 
+    @When("^a registered user$")
+    public void a_registered_user() throws Throwable {
+        accountMissions.createNewAccount();
+        accountMissions.logout();
+    }
+
     @When("^I register with my details$")
     public void i_register_with_my_details() throws Throwable {
         accountMissions.createNewAccount();

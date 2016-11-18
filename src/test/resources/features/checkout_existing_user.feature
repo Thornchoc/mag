@@ -3,6 +3,7 @@
 Feature: Checkout as existing user with the different payment methods
 
   Background:
+    Given a registered user
     Given I have added a product to my shopping bag
 
   Scenario: Checkout as existing user with paypal
@@ -23,7 +24,7 @@ Feature: Checkout as existing user with the different payment methods
     Then my order should be complete
 
   @complete
-  Scenario: Checkout as existing user with Amex
+  Scenario: Checkout as existing user with MasterCard
     When I checkout as a existing user
     And I pay with MasterCard
     Then my order should be complete

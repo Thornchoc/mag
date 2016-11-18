@@ -1,6 +1,8 @@
 package com.thorntons.stepdefs;
 
+import com.thorntons.context.ScenarioContext;
 import com.thorntons.missions.CheckoutMissions;
+import com.thorntons.model.UserDetails;
 import cucumber.api.java.en.When;
 
 import javax.inject.Inject;
@@ -8,6 +10,7 @@ import javax.inject.Inject;
 public class CheckoutStepDefs {
 
     private CheckoutMissions checkoutMissions;
+    private ScenarioContext context;
 
     @Inject
     public CheckoutStepDefs(CheckoutMissions checkoutMissions){
@@ -24,7 +27,8 @@ public class CheckoutStepDefs {
     @When("^I checkout as a existing user$")
     public void i_checkout_as_a_existing_user() throws Throwable {
         checkoutMissions.goToCheckout();
-        checkoutMissions.checkoutAsReturningCustomer("james.goddard+@magentys.io", "password");
+        UserDetails userDetails = context.getUserDetails();
+        checkoutMissions.checkoutAsReturningCustomer(userDetails.getEmail(), userDetails.getPassword());
     }
 
     @When("^I checkout as a new user$")

@@ -83,6 +83,7 @@ public class CheckoutMissions {
 
     public void enterPaymentCardDetails(String cardType) {
         CardDetails cardDetails = new CardDetailsService().getCardByType(cardType);
+        System.out.println(cardDetails.getCardType());
         billingForm.enterNameOnCard("James")
                 .selectCardType(cardDetails.getCardType())
                 .enterCardNumber(cardDetails.getCardNumber())

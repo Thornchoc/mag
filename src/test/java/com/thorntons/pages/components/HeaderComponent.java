@@ -52,7 +52,7 @@ public class HeaderComponent {
     }
 
     public HeaderComponent clickSearchIcon(){
-        searchIcon.waitUntil(enabled).click();
+        searchIcon.waitUntil(displayed.and(enabled)).click();
         return this;
     }
 
