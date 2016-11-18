@@ -1,17 +1,10 @@
 package com.thorntons.pages;
 
 import com.thorntons.Product;
-import com.thorntons.context.ThorntonsContext;
-import io.magentys.cinnamon.conf.Env;
 import io.magentys.cinnamon.webdriver.collections.PageElementCollection;
-import io.magentys.cinnamon.webdriver.conditions.Conditions;
-import io.magentys.cinnamon.webdriver.elements.AttributeContainsCondition;
 import io.magentys.cinnamon.webdriver.elements.PageElement;
 import io.magentys.cinnamon.webdriver.support.FindByKey;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
-import javax.inject.Inject;
 
 import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.attributeContains;
 import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.displayed;

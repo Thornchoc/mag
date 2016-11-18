@@ -20,7 +20,7 @@ public class UserDetails {
         setPostalCode("SE5 8LT");
         setPhone("07000000000");
         setEmail(String.format("test%s@testuser.com", System.nanoTime()));
-        setPassword("password");
+        setPassword("passwordA1!");
         return this;
     }
 

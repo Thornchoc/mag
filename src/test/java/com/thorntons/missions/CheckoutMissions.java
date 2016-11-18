@@ -7,10 +7,11 @@ import com.thorntons.pages.OrderSuccessfulPage;
 import com.thorntons.pages.PaypalExternalPage;
 import com.thorntons.pages.components.*;
 import com.thorntons.services.CardDetailsService;
+import io.magentys.cinnamon.webdriver.Browser;
 
 import javax.inject.Inject;
 
-public class CheckoutMission {
+public class CheckoutMissions {
 
     private HeaderComponent headerComponent;
     private MiniCartComponent miniCartComponent;
@@ -21,9 +22,10 @@ public class CheckoutMission {
     private PaypalExternalPage paypalExternalPage;
     private OrderReview orderReview;
     private OrderSuccessfulPage orderSuccessfulPage;
+    private RegisterForm registerForm;
 
     @Inject
-    public CheckoutMission(HeaderComponent headerComponent, MiniCartComponent miniCartComponent, CheckoutPage checkoutPage, DeliveryForm deliveryForm, BillingForm billingForm, LoginForm loginForm, PaypalExternalPage paypalExternalPage, OrderReview orderReview, OrderSuccessfulPage orderSuccessfulPage) {
+    public CheckoutMissions(HeaderComponent headerComponent, MiniCartComponent miniCartComponent, CheckoutPage checkoutPage, DeliveryForm deliveryForm, BillingForm billingForm, LoginForm loginForm, PaypalExternalPage paypalExternalPage, OrderReview orderReview, OrderSuccessfulPage orderSuccessfulPage, RegisterForm registerForm) {
         this.headerComponent = headerComponent;
         this.miniCartComponent = miniCartComponent;
         this.checkoutPage = checkoutPage;
@@ -33,6 +35,7 @@ public class CheckoutMission {
         this.paypalExternalPage = paypalExternalPage;
         this.orderReview = orderReview;
         this.orderSuccessfulPage = orderSuccessfulPage;
+        this.registerForm = registerForm;
     }
 
     public void goToCheckout() {
@@ -73,11 +76,14 @@ public class CheckoutMission {
         checkoutPage.toggleNewCustomerForm();
         UserDetails details = new UserDetails();
         details.generateUniqueUser();
-
+        registerForm.completeRegisterForm(details);
+        registerForm.clickContinueButton();
+        deliveryForm.completeDeliveryForm(details, true);
     }
 
     public void enterPaymentCardDetails(String cardType) {
         CardDetails cardDetails = new CardDetailsService().getCardByType(cardType);
+        System.out.println(cardDetails.getCardType());
         billingForm.enterNameOnCard("James")
                 .selectCardType(cardDetails.getCardType())
                 .enterCardNumber(cardDetails.getCardNumber())

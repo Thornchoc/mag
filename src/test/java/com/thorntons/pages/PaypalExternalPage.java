@@ -11,24 +11,21 @@ import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.enable
 
 public class PaypalExternalPage {
 
-    @FindBy(id = "email")
+    @FindBy(css = "form #email")
     private PageElement emailInput;
-    @FindBy(id = "password")
+    @FindBy(css = "form #password")
     private PageElement passwordInput;
     @FindBy(name = "btnLogin")
     private PageElement loginButton;
     @FindBy(id = "confirmButtonTop")
     private PageElement confirmButton;
+    @FindBy(id = "preloaderSpinner")
+    private PageElement loadingSpinner;
 
     public void enterEmail(String email){
-        try{
-        Thread.sleep(5000);
         emailInput.waitUntil(displayed.and(enabled)).click();
         emailInput.clear();
-        emailInput.typeText(email);}
-        catch(InterruptedException e){
-            System.out.println(e);
-        }
+        emailInput.typeText(email);
     }
 
     public void enterPassword(String password){
@@ -44,5 +41,7 @@ public class PaypalExternalPage {
         confirmButton.waitUntil(displayed.and(enabled)).click();
         Browser.waitUntil(Conditions.readyState(ReadyState.COMPLETE));
     }
+
+
 
 }
