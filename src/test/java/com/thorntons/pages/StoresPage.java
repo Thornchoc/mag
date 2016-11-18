@@ -7,18 +7,17 @@ import javax.inject.Inject;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
-import com.thorntons.context.ThorntonsContext;
+import com.thorntons.context.ScenarioContext;
 
 public class StoresPage {
 
-    protected final ThorntonsContext context;
+    protected final ScenarioContext context;
     protected final Env env;
     public WebDriver webDriver;
 
     @Inject
     public StoresPage(final Env env, WebDriver webDriver,
-            final ThorntonsContext context) {
+            final ScenarioContext context) {
         this.env = env;
         this.webDriver = webDriver;
         this.context = context;
