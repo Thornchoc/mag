@@ -3,6 +3,7 @@ package com.thorntons.stepdefs;
 import com.thorntons.context.ScenarioContext;
 import com.thorntons.missions.AccountMissions;
 import com.thorntons.model.UserDetails;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -32,13 +33,25 @@ public class AccountStepDefs {
         accountMissions.createNewAccount();
     }
 
-    @Then("^my account should be created$")
+    @Then("^my new email address should be saved$")
+    @And("^my account should be created$")
     public void my_account_should_be_created() throws Throwable {
         accountMissions.logout();
         UserDetails userDetails = context.getUserDetails();
         accountMissions.login(userDetails.getEmail(), userDetails.getPassword());
         assertThat("should see user name", accountMissions.isLoggedIn(userDetails.getFirstName()));
     }
+
+    @When("^I change my email address$")
+    public void i_change_my_email_address() throws Throwable {
+        UserDetails user = context.getUserDetails();
+        accountMissions.login(user.getEmail(), user.getPassword());
+        accountMissions.changeEmail();
+    }
+
+
+
+
 
 
 

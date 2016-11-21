@@ -7,7 +7,6 @@ import com.thorntons.pages.OrderSuccessfulPage;
 import com.thorntons.pages.PaypalExternalPage;
 import com.thorntons.pages.components.*;
 import com.thorntons.services.CardDetailsService;
-import io.magentys.cinnamon.webdriver.Browser;
 
 import javax.inject.Inject;
 
@@ -76,7 +75,7 @@ public class CheckoutMissions {
         checkoutPage.toggleNewCustomerForm();
         UserDetails details = new UserDetails();
         details.generateUniqueUser();
-        registerForm.completeRegisterForm(details);
+        registerForm.completeForm(details);
         registerForm.clickContinueButton();
         deliveryForm.completeDeliveryForm(details, true);
     }
