@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+
 import com.thorntons.context.ScenarioContext;
 
 public class StoresPage {

@@ -1,7 +1,6 @@
 package com.thorntons.pages;
 
 import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.attributeContains;
-import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.clickable;
 import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.displayed;
 import io.magentys.cinnamon.conf.Env;
 import io.magentys.cinnamon.webdriver.Browser;
@@ -19,6 +18,8 @@ import com.thorntons.context.ScenarioContext;
 public class HomePage {
 
     protected static final String THORNTONS_URL = "thorntons-url";
+
+    private static final String THORNTONS_ENV = "thorntons-env";
 
     protected final ScenarioContext context;
     protected final Env env;
@@ -61,9 +62,11 @@ public class HomePage {
     }
 
     public void selectOurShops() throws InterruptedException {
-        ourShops.waitUntil(clickable).hoverOver().byOffset(20, 20).click();
-        Thread.sleep(4000);
-        ourShops.waitUntil(clickable).hoverOver().byOffset(20, 20).click();
+        // NOTE: Clicking on the Our Shops doesn't work at the moment. Go to URL
+        // directly instead
+        // ourShops.waitUntil(clickable).hoverOver().byOffset(0, 0).click();
+        Browser.open("https://" + env.config.getString(THORNTONS_ENV)
+                + "-store-thorntons.demandware.net/s/Thorntons/store-locator/");
     }
 
 }

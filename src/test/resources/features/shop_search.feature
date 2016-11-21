@@ -6,7 +6,7 @@ Background:
 	
 Scenario: Search for a Store by Postcode 
 	When I enter my postcode 
-	#Then I can see a shop near me 
+	Then I can see a shop near me 
 	
 	
 #Scenario: Search for a Store by County 
