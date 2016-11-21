@@ -11,7 +11,7 @@ public class ScenarioContext {
     private UserDetails userDetails;
     List<Product> products = new ArrayList<>();
     private Product product;
-    
+
     public List<Product> getProducts() {
         return products;
     }
@@ -32,7 +32,7 @@ public class ScenarioContext {
         this.userDetails = userDetails;
     }
 
-    public UserDetails getUserDetails(){
+    public UserDetails getUserDetails() {
         return userDetails;
     }
 }
