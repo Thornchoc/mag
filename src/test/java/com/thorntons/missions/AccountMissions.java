@@ -3,6 +3,7 @@ package com.thorntons.missions;
 import com.thorntons.context.ScenarioContext;
 import com.thorntons.model.UserDetails;
 import com.thorntons.pages.AccountPage;
+import com.thorntons.pages.components.EditAccountForm;
 import com.thorntons.pages.components.HeaderComponent;
 import com.thorntons.pages.components.LoginForm;
 import com.thorntons.pages.components.RegisterForm;
@@ -16,14 +17,16 @@ public class AccountMissions {
     private ScenarioContext context;
     private LoginForm loginForm;
     private AccountPage accountPage;
+    private EditAccountForm editAccountForm;
 
     @Inject
-    public AccountMissions(HeaderComponent headerComponent, RegisterForm registerForm, LoginForm loginForm, AccountPage accountPage, ScenarioContext context) {
+    public AccountMissions(HeaderComponent headerComponent, RegisterForm registerForm, LoginForm loginForm, AccountPage accountPage, ScenarioContext context, EditAccountForm editAccountForm) {
         this.headerComponent = headerComponent;
         this.registerForm = registerForm;
         this.loginForm = loginForm;
         this.accountPage = accountPage;
         this.context = context;
+        this.editAccountForm = editAccountForm;
     }
 
     public void createNewAccount() {
@@ -31,7 +34,7 @@ public class AccountMissions {
                 .clickRegisterUserOption();
         UserDetails userDetails = new UserDetails().generateUniqueUser();
         context.setUserDetails(userDetails);
-        registerForm.completeRegisterForm(userDetails);
+        registerForm.completeForm(userDetails);
         registerForm.clickApplyButton();
     }
 
@@ -53,6 +56,12 @@ public class AccountMissions {
     }
 
     public void changeEmail() {
-        headerComponent.hover
+        headerComponent.clickMyAccountIcon();
+        accountPage.clickPersonalDataOption();
+        UserDetails user = context.getUserDetails();
+        user.setEmail(UserDetails.generateUniqueEmail());
+        context.setUserDetails(user);
+        editAccountForm.completeForm(user);
+        editAccountForm.clickApplyButton();
     }
 }

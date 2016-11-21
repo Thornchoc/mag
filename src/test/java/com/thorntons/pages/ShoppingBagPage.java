@@ -20,11 +20,11 @@ import java.util.List;
 public class ShoppingBagPage implements ProductView {
     
     private List<Product> actualProducts = new ArrayList<>();
+    private ScenarioContext context;
 
-    protected final ScenarioContext context;
-    protected final Env env;
-
-    public WebDriver webDriver;
+    public ShoppingBagPage(final ScenarioContext context){
+        this.context = context;
+    }
 
     @FindByKey("bag-page.checkout-button")
     public PageElement checkOut;
@@ -32,12 +32,7 @@ public class ShoppingBagPage implements ProductView {
     @FindByKey(value = "bag-page.cart-row")
     public PageElementCollection cartRow;
 
-    @Inject
-    public ShoppingBagPage(ScenarioContext context, WebDriver webDriver, Env env) {
-        this.context = context;
-        this.webDriver=webDriver;
-        this.env = env;
-    }
+
 
     public void checkOut() throws InterruptedException {
         checkOut.click();

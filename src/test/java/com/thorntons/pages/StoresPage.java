@@ -11,18 +11,6 @@ import com.thorntons.context.ScenarioContext;
 
 public class StoresPage {
 
-    protected final ScenarioContext context;
-    protected final Env env;
-    public WebDriver webDriver;
-
-    @Inject
-    public StoresPage(final Env env, WebDriver webDriver,
-            final ScenarioContext context) {
-        this.env = env;
-        this.webDriver = webDriver;
-        this.context = context;
-    }
-
     @FindBy(id = "dwfrm_storelocator_postalCode")
     public PageElement postcodeField;
 
@@ -37,7 +25,6 @@ public class StoresPage {
 
     public void enterPostcode(String postcode) {
         postcodeField.fillIn(postcode);
-
     }
 
     public void clickSearch() {

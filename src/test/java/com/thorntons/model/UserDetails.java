@@ -19,9 +19,13 @@ public class UserDetails {
         setCity("London");
         setPostalCode("SE5 8LT");
         setPhone("07000000000");
-        setEmail(String.format("test%s@testuser.com", System.nanoTime()));
+        setEmail(generateUniqueEmail());
         setPassword("passwordA1!");
         return this;
+    }
+
+    public static String generateUniqueEmail(){
+        return String.format("test%s@testuser.com", System.nanoTime());
     }
 
     @JsonProperty("country")

@@ -29,7 +29,7 @@ public class RegisterForm {
     @FindBy(name = "dwfrm_profile_confirm")
     private PageElement applyButton;
 
-    public void completeRegisterForm(UserDetails details){
+    public void completeForm(UserDetails details){
         enterFirstName(details.getFirstName());
         enterLastName(details.getLastName());
         enterEmailAddress(details.getEmail());
@@ -38,27 +38,33 @@ public class RegisterForm {
         enterConfirmPassword(details.getPassword());
     }
 
-    private void enterConfirmPassword(String password) {
+    public void enterConfirmPassword(String password) {
+        confirmPasswordInput.clear();
         confirmPasswordInput.typeText(password);
     }
 
-    private void enterPassword(String password) {
+    public void enterPassword(String password) {
+        passwordInput.clear();
         passwordInput.typeText(password);
     }
 
     public void enterFirstName(String fName){
-        firstNameInput.waitUntil(displayed.and(enabled)).typeText(fName);
+        firstNameInput.waitUntil(displayed.and(enabled)).clear();
+        firstNameInput.typeText(fName);
     }
 
     public void enterLastName(String lName){
+        lastNameInput.clear();
         lastNameInput.typeText(lName);
     }
 
-    private void enterEmailAddress(String email) {
+    public void enterEmailAddress(String email) {
+        emailInput.clear();
         emailInput.typeText(email);
     }
 
-    private void enterConfirmEmailAddress(String email) {
+    public void enterConfirmEmailAddress(String email) {
+        confirmEmailInput.clear();
         confirmEmailInput.typeText(email);
     }
 
