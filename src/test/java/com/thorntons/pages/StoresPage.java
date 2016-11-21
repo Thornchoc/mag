@@ -33,8 +33,14 @@ public class StoresPage {
     @FindBy(css = "div[class=\"your-search-found\"]")
     public PageElement resultsTitle;
 
-    @FindBy(id = "dwfrm_storelocator_county")
+    @FindBy(name = "dwfrm_storelocator_county")
     private PageElement countyDropDown;
+
+    @FindBy(name = "dwfrm_storelocator_findbystate")
+    private PageElement countySearch;
+
+    @FindBy(name = "dwfrm_storelocator_maxdistance")
+    private PageElement radiusDropDown;
 
     public void enterPostcode(String postcode) {
         postcodeField.fillIn(postcode);
@@ -51,9 +57,31 @@ public class StoresPage {
 
     }
 
-    public void selectCounty(String county) {
-        countyDropDown.select().byVisibleText(county);
+    public StoresPage selectCounty(String county) {
+        countyDropDown.select().byVisibleTextContains(county);
+        return this;
 
+    }
+
+    public StoresPage clickCountySearch() {
+        countySearch.click();
+        return this;
+
+    }
+
+    public boolean checkCountyResults() {
+        return resultsTitle.getText().contains("Your Search Found 6 Stores");
+    }
+
+    public StoresPage selectRadius(Integer radius) {
+        String rad = radius.toString();
+        radiusDropDown.select().byVisibleTextContains(rad);
+        return this;
+
+    }
+
+    public boolean checkCountyResultsBasedOnRadius() {
+        return resultsTitle.getText().contains("Your Search Found 35 Stores");
     }
 
 }

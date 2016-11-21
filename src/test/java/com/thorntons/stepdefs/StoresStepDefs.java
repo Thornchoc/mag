@@ -30,16 +30,27 @@ public class StoresStepDefs {
         Assert.assertTrue("Store number results is incorrect",
                 storesPage.checkResults());
     }
-    
+
     @When("^I select my County$")
     public void i_select_my_County() throws Throwable {
-        storesPage.selectCounty("Surrey");
+        storesPage.selectCounty("Surrey").clickCountySearch();
     }
-    
+
     @Then("^I can see all the shops in my county$")
     public void i_can_see_all_the_shops_in_my_county() throws Throwable {
         Assert.assertTrue("Store number results is incorrect",
-                storesPage.checkResults());
+                storesPage.checkCountyResults());
+    }
+
+    @When("^I select a radius of (\\d+) miles$")
+    public void i_select_a_radius_of_miles(Integer radius) throws Throwable {
+        storesPage.selectRadius(radius).clickSearch();
+    }
+
+    @Then("^I can see all the shops in that (\\d+) miles radius$")
+    public void i_can_see_all_the_shops_in_that_miles_radius(int arg1) throws Throwable {
+        Assert.assertTrue("Store number results is incorrect",
+                storesPage.checkCountyResultsBasedOnRadius());
     }
 
 }
