@@ -11,7 +11,7 @@ Feature: Checkout as guest with the different payment methods
     And I pay with paypal
     Then my order should be complete
 
-  @complete @wip
+  @complete
   Scenario: Checkout as Guest with visa
     When I checkout as a guest
     And I pay with Visa

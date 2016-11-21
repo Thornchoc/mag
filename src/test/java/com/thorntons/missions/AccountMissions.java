@@ -51,4 +51,8 @@ public class AccountMissions {
     public boolean isLoggedIn(String name){
         return accountPage.isUserNameDisplayed(name);
     }
+
+    public void changeEmail() {
+        headerComponent.hover
+    }
 }
