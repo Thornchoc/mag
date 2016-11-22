@@ -12,6 +12,7 @@ import java.util.Map;
 public class UserDetails {
 
     public UserDetails generateUniqueUser(){
+        setAddressName("myAddress1");
         setCountry("United Kingdom");
         setFirstName("John");
         setLastName("Smith");
@@ -28,6 +29,7 @@ public class UserDetails {
         return String.format("test%s@testuser.com", System.nanoTime());
     }
 
+    private String addressName;
     @JsonProperty("country")
     private String country;
     @JsonProperty("first_name")
@@ -58,6 +60,14 @@ public class UserDetails {
 
     public void setPassword(String password){
         this.password = password;
+    }
+
+    public void setAddressName(String addressName){
+        this.addressName = addressName;
+    }
+
+    public String getAddressName(){
+        return addressName;
     }
 
     /**

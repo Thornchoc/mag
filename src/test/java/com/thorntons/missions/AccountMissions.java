@@ -3,10 +3,9 @@ package com.thorntons.missions;
 import com.thorntons.context.ScenarioContext;
 import com.thorntons.model.UserDetails;
 import com.thorntons.pages.AccountPage;
-import com.thorntons.pages.components.EditAccountForm;
-import com.thorntons.pages.components.HeaderComponent;
-import com.thorntons.pages.components.LoginForm;
-import com.thorntons.pages.components.RegisterForm;
+import com.thorntons.pages.AddressPage;
+import com.thorntons.pages.components.*;
+import io.magentys.cinnamon.webdriver.Browser;
 
 import javax.inject.Inject;
 
@@ -18,15 +17,19 @@ public class AccountMissions {
     private LoginForm loginForm;
     private AccountPage accountPage;
     private EditAccountForm editAccountForm;
+    private AddressPage addressPage;
+    private AddAddressForm addAddressForm;
 
     @Inject
-    public AccountMissions(HeaderComponent headerComponent, RegisterForm registerForm, LoginForm loginForm, AccountPage accountPage, ScenarioContext context, EditAccountForm editAccountForm) {
+    public AccountMissions(HeaderComponent headerComponent, RegisterForm registerForm, LoginForm loginForm, AccountPage accountPage, ScenarioContext context, EditAccountForm editAccountForm, AddressPage addressPage, AddAddressForm addAddressForm) {
         this.headerComponent = headerComponent;
         this.registerForm = registerForm;
         this.loginForm = loginForm;
         this.accountPage = accountPage;
         this.context = context;
         this.editAccountForm = editAccountForm;
+        this.addressPage = addressPage;
+        this.addAddressForm = addAddressForm;
     }
 
     public void createNewAccount() {
@@ -63,5 +66,19 @@ public class AccountMissions {
         context.setUserDetails(user);
         editAccountForm.completeForm(user);
         editAccountForm.clickApplyButton();
+    }
+
+    public void addAddress() {
+        headerComponent.clickMyAccountIcon();
+        accountPage.clickAddressesOption();
+        addressPage.clickCreateNewAddressButton();
+        UserDetails user = context.getUserDetails();
+        addAddressForm.completeAddressForm(user);
+        addAddressForm.clickApply();
+    }
+
+    public boolean isAddressDisplayed(){
+        UserDetails user = context.getUserDetails();
+        return addressPage.isAddressListed(user.getAddressName());
     }
 }

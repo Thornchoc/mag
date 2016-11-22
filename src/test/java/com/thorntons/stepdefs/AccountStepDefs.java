@@ -26,6 +26,8 @@ public class AccountStepDefs {
     public void a_registered_user() throws Throwable {
         accountMissions.createNewAccount();
         accountMissions.logout();
+        System.out.println(context.getUserDetails().getEmail());
+        System.out.println(context.getUserDetails().getPassword());
     }
 
     @When("^I register with my details$")
@@ -49,10 +51,17 @@ public class AccountStepDefs {
         accountMissions.changeEmail();
     }
 
+    @When("^I add an address$")
+    public void i_change_my_address() throws Throwable {
+        UserDetails user = context.getUserDetails();
+        accountMissions.login(user.getEmail(), user.getPassword());
+        accountMissions.addAddress();
+    }
 
-
-
-
+    @Then("^I should see the address in my addresses$")
+    public void i_should_see_the_address_in_my_addresses() throws Throwable {
+        assertThat("should see address", accountMissions.isAddressDisplayed());
+    }
 
 
 }
