@@ -1,14 +1,8 @@
 package com.thorntons.pages;
 
-import io.magentys.cinnamon.conf.Env;
 import io.magentys.cinnamon.webdriver.elements.PageElement;
 
-import javax.inject.Inject;
-
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
-import com.thorntons.context.ScenarioContext;
 
 public class StoresPage {
 
@@ -29,6 +23,15 @@ public class StoresPage {
 
     @FindBy(name = "dwfrm_storelocator_maxdistance")
     private PageElement radiusDropDown;
+
+    @FindBy(id = "521")
+    private PageElement shopStoreDetailsLink;
+
+    @FindBy(css = "div[class=\"store-address\"]")
+    private PageElement shopStoreAddressDetails;
+
+    @FindBy(css = "div[class=\"google-map-wrapper\"]")
+    private PageElement shopStoreGoogleMap;
 
     public void enterPostcode(String postcode) {
         postcodeField.fillIn(postcode);
@@ -69,6 +72,21 @@ public class StoresPage {
 
     public boolean checkCountyResultsBasedOnRadius() {
         return resultsTitle.getText().contains("Your Search Found 35 Stores");
+    }
+
+    public StoresPage clickStoreDetails(String storeID) {
+        shopStoreDetailsLink.click();
+        return this;
+
+    }
+
+    public boolean checkStoreAddressInformation() {
+        return shopStoreAddressDetails.getText().contains("160 High Street");
+
+    }
+
+    public boolean checkStoreGoogleMap() {
+        return shopStoreGoogleMap.isPresent();
     }
 
 }

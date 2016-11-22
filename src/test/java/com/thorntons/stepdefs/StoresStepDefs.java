@@ -52,5 +52,23 @@ public class StoresStepDefs {
         Assert.assertTrue("Store number results is incorrect",
                 storesPage.checkCountyResultsBasedOnRadius());
     }
+    
+    @When("^I select a shop from the list$")
+    public void i_select_a_shop_from_the_list() throws Throwable {
+        storesPage.clickStoreDetails("521");
+        
+    }
+    
+    @Then("^I can see a map location$")
+    public void i_can_see_a_map_location() throws Throwable {
+        Assert.assertTrue("Google map not found",
+                storesPage.checkStoreGoogleMap());
+    }
+
+    @Then("^information about that store$")
+    public void information_about_that_store() throws Throwable {
+        Assert.assertTrue("No address info for the store found",
+                storesPage.checkStoreAddressInformation());
+    }
 
 }

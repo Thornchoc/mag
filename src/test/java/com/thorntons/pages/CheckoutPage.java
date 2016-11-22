@@ -18,18 +18,17 @@ public class CheckoutPage {
     @FindBy(css = ".toggle-logged-in-customer")
     private PageElement returningCustomerFormToggle;
 
-    public void toggleNewCustomerForm(){
+    public void toggleNewCustomerForm() {
         newCustomerFormToggle.waitUntil(displayed.and(enabled)).click();
     }
 
-    public void toggleReturningCustomerForm(){
+    public void toggleReturningCustomerForm() {
         returningCustomerFormToggle.waitUntil(displayed.and(enabled)).click();
     }
 
-    public void clickCheckoutAsGuest(){
+    public void clickCheckoutAsGuest() {
         checkoutGuestButton.waitUntil(displayed.and(enabled)).click();
         Browser.waitUntil(Conditions.readyState(ReadyState.COMPLETE));
     }
-
 
 }

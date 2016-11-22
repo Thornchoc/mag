@@ -1,14 +1,14 @@
 package com.thorntons.pages;
 
-import com.thorntons.Product;
+import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.attributeContains;
+import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.displayed;
 import io.magentys.cinnamon.webdriver.collections.PageElementCollection;
 import io.magentys.cinnamon.webdriver.elements.PageElement;
 import io.magentys.cinnamon.webdriver.support.FindByKey;
+
 import org.openqa.selenium.support.FindBy;
 
-import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.attributeContains;
-import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.displayed;
-
+import com.thorntons.model.Product;
 
 public class ProductDetailsPage {
 
@@ -24,19 +24,22 @@ public class ProductDetailsPage {
     private PageElement quantityInput;
     @FindBy(css = ".tag-reminder-btn")
     private PageElementCollection addMessageDialogOptions;
-    
 
     public void clickAddToBag() {
         addToBag.click();
     }
 
-    public void viewCart()  { viewBag.click(); }
+    public void viewCart() {
+        viewBag.click();
+    }
 
     public Product getProductDetails() {
-        return new Product(productName.getText(), price.getText(), quantityInput.getText());
+        return new Product(productName.getText(), price.getText(),
+                quantityInput.getText());
     }
 
     public void dialogAddPersonalMessage(String option) {
-        addMessageDialogOptions.first(attributeContains("class", option)).waitUntil(displayed).click();
+        addMessageDialogOptions.first(attributeContains("class", option))
+                .waitUntil(displayed).click();
     }
 }
