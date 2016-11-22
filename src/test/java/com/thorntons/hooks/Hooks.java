@@ -1,21 +1,22 @@
 package com.thorntons.hooks;
 
-import javax.inject.Inject;
-
-import com.thorntons.pages.HomePage;
-import com.thorntons.pages.components.CookieBanner;
+import static io.magentys.cinnamon.webdriver.Browser.open;
+import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.displayed;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
 import io.magentys.cinnamon.conf.Env;
-import cucumber.api.java.Before;
 import io.magentys.cinnamon.webdriver.Browser;
 import io.magentys.cinnamon.webdriver.ReadyState;
 import io.magentys.cinnamon.webdriver.conditions.Conditions;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.server.handler.html5.Utils;
 
-import static io.magentys.cinnamon.webdriver.Browser.open;
-import static io.magentys.cinnamon.webdriver.conditions.ElementConditions.*;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
+import javax.inject.Inject;
+
+import org.openqa.selenium.WebDriver;
+
+import com.thorntons.pages.HomePage;
+import com.thorntons.pages.components.CookieBanner;
+
+import cucumber.api.java.Before;
 
 public class Hooks {
 

@@ -1,10 +1,10 @@
 package com.thorntons.context;
 
-import com.thorntons.Product;
-import com.thorntons.model.UserDetails;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.thorntons.model.Product;
+import com.thorntons.model.UserDetails;
 
 public class ScenarioContext {
 

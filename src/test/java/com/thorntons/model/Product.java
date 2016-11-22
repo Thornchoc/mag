@@ -1,4 +1,4 @@
-package com.thorntons;
+package com.thorntons.model;
 
 public class Product {
     
