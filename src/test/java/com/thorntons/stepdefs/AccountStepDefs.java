@@ -25,6 +25,7 @@ public class AccountStepDefs {
     @When("^a registered user$")
     public void a_registered_user() throws Throwable {
         accountMissions.createNewAccount();
+        accountMissions.addAddress();
         accountMissions.logout();
         System.out.println(context.getUserDetails().getEmail());
         System.out.println(context.getUserDetails().getPassword());

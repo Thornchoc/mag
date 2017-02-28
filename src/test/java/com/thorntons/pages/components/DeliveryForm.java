@@ -91,7 +91,7 @@ public class DeliveryForm {
     }
 
     public void clickContinue() {
-        continueButton.waitUntil(displayed.and(enabled)).click();
+        continueButton.waitUntil(displayed.and(enabled)).scrollIntoView().click();
         Browser.waitUntil(Conditions.readyState(ReadyState.COMPLETE));
     }
 

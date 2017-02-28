@@ -11,7 +11,7 @@ Feature: Checkout as existing user with the different payment methods
     And I pay with paypal
     Then my order should be complete
 
-  @complete
+  @complete 
   Scenario: Checkout as existing user with visa
     When I checkout as a existing user
     And I pay with Visa

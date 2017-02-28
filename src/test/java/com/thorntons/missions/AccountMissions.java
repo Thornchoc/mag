@@ -6,8 +6,12 @@ import com.thorntons.pages.AccountPage;
 import com.thorntons.pages.AddressPage;
 import com.thorntons.pages.components.*;
 import io.magentys.cinnamon.webdriver.Browser;
+import io.magentys.cinnamon.webdriver.ReadyState;
+import io.magentys.cinnamon.webdriver.conditions.Conditions;
 
 import javax.inject.Inject;
+
+import static io.magentys.cinnamon.webdriver.Browser.sleep;
 
 public class AccountMissions {
 
@@ -42,6 +46,8 @@ public class AccountMissions {
     }
 
     public void logout() {
+        Browser.waitUntil(Conditions.readyState(ReadyState.COMPLETE).and(Conditions.ajaxFinished));
+        sleep(5000);
         headerComponent
                 .clickMyAccountIcon()
                 .clickSignOutButton();

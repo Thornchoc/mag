@@ -13,8 +13,9 @@ public class CheckoutStepDefs {
     private ScenarioContext context;
 
     @Inject
-    public CheckoutStepDefs(CheckoutMissions checkoutMissions){
+    public CheckoutStepDefs(CheckoutMissions checkoutMissions, ScenarioContext context){
         this.checkoutMissions = checkoutMissions;
+        this.context = context;
     }
 
     @When("^I checkout as a guest$")

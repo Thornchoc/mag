@@ -14,11 +14,14 @@ import org.openqa.selenium.WebElement;
 import com.thorntons.context.ScenarioContext;
 import com.thorntons.model.Product;
 
+import javax.inject.Inject;
+
 public class ShoppingBagPage implements ProductView {
 
     private List<Product> actualProducts = new ArrayList<>();
     private ScenarioContext context;
 
+    @Inject
     public ShoppingBagPage(final ScenarioContext context) {
         this.context = context;
     }

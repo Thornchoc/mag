@@ -22,7 +22,7 @@ public class HeaderComponent {
     private PageElement basketIcon;
     @FindBy(css=".product-link")
     private PageElement productSuggestion;
-    @FindBy(css = ".user-icon")
+    @FindBy(css = ".user-account > .user-icon")
     private PageElement myAccountIcon;
     @FindBy(css = ".user-option")
     private PageElementCollection userOptions;
@@ -30,7 +30,7 @@ public class HeaderComponent {
     private PageElement signOutButton;
 
     public HeaderComponent clickMyAccountIcon(){
-        myAccountIcon.click();
+        myAccountIcon.waitUntil(displayed.and(enabled)).click();
         return this;
     }
 

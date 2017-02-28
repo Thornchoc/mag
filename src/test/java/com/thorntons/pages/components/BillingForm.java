@@ -47,8 +47,8 @@ public class BillingForm {
         return this;
     }
 
-    public BillingForm enterNameOnCard(String james) {
-        paymentCardNameInput.waitUntil(displayed.and(enabled)).typeText(james);
+    public BillingForm enterNameOnCard(String name) {
+        paymentCardNameInput.waitUntil(displayed.and(enabled)).typeText(name);
         return this;
     }
 
