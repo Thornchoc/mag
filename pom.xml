@@ -7,7 +7,7 @@
 	<version>1.0-SNAPSHOT</version>
 
 	<properties>
-		<cinnamon.version>0.0.2-SNAPSHOT</cinnamon.version>
+		<cinnamon.version>0.0.3-SNAPSHOT</cinnamon.version>
 		<cucumber.options>--tags @complete,@accepted</cucumber.options>
 		<failsafe.fork.count>4</failsafe.fork.count>
 		<java.version>1.8</java.version>
@@ -197,7 +197,23 @@
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.2.2</version>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+			<groupId>io.magentys</groupId>
+			<artifactId>cherry</artifactId>
+			<version>1.0.7</version>
+		</dependency>
+		<dependency>
+			<groupId>io.magentys</groupId>
+			<artifactId>cherry-java8</artifactId>
+			<version>1.0.7</version>
+		</dependency>
+    </dependencies>
 
 	<profiles>
 		<profile>
@@ -220,10 +236,10 @@
 
 	<repositories>
 		<repository>
-			<id>magentys-group</id>
-			<url>http://nexus.magentys.io:8081/nexus/content/groups/magentys</url>
+			<id>oss.snap</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 			<releases>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 			</releases>
 			<snapshots>
 				<enabled>true</enabled>
@@ -231,10 +247,4 @@
 		</repository>
 	</repositories>
 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>magentys-group</id>
-			<url>http://nexus.magentys.io:8081/nexus/content/groups/magentys</url>
-		</pluginRepository>
-	</pluginRepositories>
 </project>
